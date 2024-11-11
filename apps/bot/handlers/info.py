@@ -1,3 +1,5 @@
+import re
+
 from django.utils.translation import activate, gettext as _
 from telebot import TeleBot
 from telebot.types import Message
@@ -18,18 +20,24 @@ def handle_info(message: Message, bot: TeleBot):
         is_active=True,
     )
     info = BotUsers.objects.get(telegram_id=message.from_user.id)
+
+    # Escape special characters for MarkdownV2
+    def escape_markdown(text):
+        return re.sub(r'([*_`\[\]()~>#+-=|{}.!])', r'\\\1', text or '')
+
     text = _(
-        f"*ID*: {(str(info.id))}\n"
-        f"*Telegram ID*: {(str(info.telegram_id))}\n"
-        f"*Username*: {(info.username or '')}\n"
-        f"*First name*: {(info.first_name or '')}\n"
-        f"*Last name*: {(info.last_name or '')}\n"
-        f"*Fullname*: {(info.full_name or '')}\n"
-        f"*Phone*: {(info.phone or '')}\n"
-        f"*Region*: {(info.region or '')}\n"
-        f"*Science*: {(info.science or '')}\n"
-        f"*Created at*: {(str(info.created_at))}\n"
+        f"*ID*: {escape_markdown(str(info.id))}\n"
+        f"*Telegram ID*: {escape_markdown(str(info.telegram_id))}\n"
+        f"*Username*: {escape_markdown(info.username)}\n"
+        f"*First name*: {escape_markdown(info.first_name)}\n"
+        f"*Last name*: {escape_markdown(info.last_name)}\n"
+        f"*Fullname*: {escape_markdown(info.full_name)}\n"
+        f"*Phone*: {escape_markdown(info.phone)}\n"
+        f"*Region*: {escape_markdown(info.region)}\n"
+        f"*Science*: {escape_markdown(info.science)}\n"
+        f"*Created at*: {escape_markdown(str(info.created_at))}\n"
     )
+
     bot.send_message(
         message.chat.id,
         text,
