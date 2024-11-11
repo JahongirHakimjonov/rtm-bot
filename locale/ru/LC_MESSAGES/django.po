@@ -1,0 +1,272 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-11-11 13:59+0500\n"
+"PO-Revision-Date: 2024-11-11 14:13+0500\n"
+"Last-Translator:   <jahongirhakimjonov@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Translated-Using: django-rosetta 0.10.0\n"
+
+#: apps/bot/handlers/contact.py:27 apps/bot/handlers/register.py:26
+#: apps/bot/keyboard/home.py:7
+msgid "Contact"
+msgstr "Обратиться"
+
+#: apps/bot/handlers/contact.py:29
+msgid "Cancel"
+msgstr "Отменить"
+
+#: apps/bot/handlers/contact.py:31
+msgid "Contact us or cancel:"
+msgstr "Выберите: обратиться или отменить."
+
+#: apps/bot/handlers/contact.py:39
+msgid "Has been canceled."
+msgstr "Отменено."
+
+#: apps/bot/handlers/contact.py:49
+msgid "Please send your message:"
+msgstr "Пожалуйста, отправьте сообщение."
+
+#: apps/bot/handlers/contact.py:89
+msgid "Your message has been sent and saved."
+msgstr "Ваше сообщение отправлено и сохранено."
+
+#: apps/bot/handlers/info.py:22
+#, python-brace-format
+msgid "*ID*: {info.id}\n"
+msgstr ""
+
+#: apps/bot/handlers/language.py:51
+msgid "Language updated successfully!"
+msgstr "Язык обновлен!"
+
+#: apps/bot/handlers/register.py:22 apps/bot/keyboard/home.py:9
+msgid "Language"
+msgstr "Язык"
+
+#: apps/bot/handlers/register.py:24 apps/bot/keyboard/home.py:8
+msgid "Info"
+msgstr "Обо мне"
+
+#: apps/bot/handlers/register.py:31
+msgid "Unknown command."
+msgstr "Неизвестная команда."
+
+#: apps/bot/handlers/register.py:52
+msgid "Please enter your full name:"
+msgstr "Пожалуйста, введите полное имя:"
+
+#: apps/bot/handlers/register.py:64
+msgid "Unknown action."
+msgstr "Неизвестное действие."
+
+#: apps/bot/handlers/user.py:38
+msgid "An error occurred."
+msgstr "Ошибка."
+
+#: apps/bot/handlers/user.py:50
+msgid "Telefon raqamni yuborish"
+msgstr "Отправить телефонный номер"
+
+#: apps/bot/handlers/user.py:53
+msgid "Please enter your phone number:"
+msgstr "Введите номер телефона:"
+
+#: apps/bot/handlers/user.py:70
+msgid "Yaroqsiz telefon raqam formati. Iltimos, qayta urinib ko'ring."
+msgstr "Неверный формат номера телефона. Пожалуйста, повторите попытку."
+
+#: apps/bot/handlers/user.py:84
+msgid "Please select your region:"
+msgstr "Выберите регион:"
+
+#: apps/bot/handlers/user.py:98
+msgid "Please select your science field:"
+msgstr "Выберите предмет:"
+
+#: apps/bot/handlers/user.py:111
+msgid "Thank you! Your information has been updated."
+msgstr "Спасибо! Ваша информация была обновлена."
+
+#: apps/bot/middlewares/antiflood_middleware.py:18
+msgid "You are making request too often"
+msgstr "Вы задаете запрос слишком часто"
+
+#: apps/rtm/admin/users.py:33 apps/rtm/models/users.py:47
+msgid "Til"
+msgstr ""
+
+#: apps/rtm/admin/users.py:43 apps/rtm/models/users.py:54
+msgid "Rol"
+msgstr ""
+
+#: apps/rtm/admin/users.py:53 apps/rtm/models/users.py:26
+msgid "Telegram ID"
+msgstr ""
+
+#: apps/rtm/admin/users.py:57
+msgid "Region"
+msgstr ""
+
+#: apps/rtm/admin/users.py:61
+msgid "Science"
+msgstr ""
+
+#: apps/rtm/models/messages.py:18
+msgid "The image size must be at least 5MB."
+msgstr ""
+
+#: apps/rtm/models/messages.py:24 apps/rtm/models/users.py:17
+msgid "Foydalanuvchi"
+msgstr ""
+
+#: apps/rtm/models/messages.py:26
+msgid "Chat ID"
+msgstr ""
+
+#: apps/rtm/models/messages.py:27
+msgid "Message ID"
+msgstr ""
+
+#: apps/rtm/models/messages.py:31 apps/rtm/models/messages.py:44
+#: apps/rtm/models/messages.py:49
+msgid "Xabar"
+msgstr ""
+
+#: apps/rtm/models/messages.py:37 apps/rtm/models/messages.py:60
+msgid "Rasm"
+msgstr ""
+
+#: apps/rtm/models/messages.py:40
+msgid "Javob berildimi"
+msgstr ""
+
+#: apps/rtm/models/messages.py:45
+msgid "Xabarlar"
+msgstr ""
+
+#: apps/rtm/models/messages.py:54 apps/rtm/models/messages.py:69
+msgid "Javob"
+msgstr ""
+
+#: apps/rtm/models/messages.py:70
+msgid "Javoblar"
+msgstr ""
+
+#: apps/rtm/models/region.py:11
+msgid "Viloyat nomi"
+msgstr ""
+
+#: apps/rtm/models/region.py:12 apps/rtm/models/science.py:12
+#: apps/rtm/models/users.py:49
+msgid "Faolmi"
+msgstr ""
+
+#: apps/rtm/models/region.py:19 apps/rtm/models/users.py:56
+msgid "Viloyat"
+msgstr ""
+
+#: apps/rtm/models/region.py:20 core/config/unfold_navigation.py:76
+msgid "Viloyatlar"
+msgstr ""
+
+#: apps/rtm/models/science.py:11
+msgid "Fan nomi"
+msgstr ""
+
+#: apps/rtm/models/science.py:19 apps/rtm/models/users.py:57
+msgid "Fan"
+msgstr ""
+
+#: apps/rtm/models/science.py:20 core/config/unfold_navigation.py:84
+msgid "Fanlar"
+msgstr ""
+
+#: apps/rtm/models/users.py:15
+msgid "Admin"
+msgstr ""
+
+#: apps/rtm/models/users.py:16
+msgid "Moderator"
+msgstr ""
+
+#: apps/rtm/models/users.py:21
+msgid "O'zbek tili"
+msgstr ""
+
+#: apps/rtm/models/users.py:22
+msgid "Rus tili"
+msgstr ""
+
+#: apps/rtm/models/users.py:31
+msgid "Foydalanuvchi nomi"
+msgstr ""
+
+#: apps/rtm/models/users.py:33
+msgid "Ism"
+msgstr ""
+
+#: apps/rtm/models/users.py:35
+msgid "Familiya"
+msgstr ""
+
+#: apps/rtm/models/users.py:38
+msgid "Ism va Familiya"
+msgstr ""
+
+#: apps/rtm/models/users.py:41
+msgid "Telefon raqam"
+msgstr ""
+
+#: apps/rtm/models/users.py:61
+msgid "Bot Foydalanuvchisi"
+msgstr ""
+
+#: apps/rtm/models/users.py:62 core/config/unfold_navigation.py:54
+msgid "Bot Foydalanuvchilari"
+msgstr ""
+
+#: core/config/unfold_navigation.py:21
+msgid "Bosh sahifa"
+msgstr ""
+
+#: core/config/unfold_navigation.py:29 core/config/unfold_navigation.py:40
+msgid "Foydalanuvchilar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:32
+msgid "Guruhlar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:51
+msgid "RTM bot"
+msgstr ""
+
+#: core/config/unfold_navigation.py:62
+msgid "Murojaatlar"
+msgstr ""
+
+#: core/config/unfold_navigation.py:73
+msgid "RTM bot qo'shimcha"
+msgstr ""
+
+#: core/settings.py:102
+msgid "Russia"
+msgstr ""
+
+#: core/settings.py:103
+msgid "Uzbek"
+msgstr ""
