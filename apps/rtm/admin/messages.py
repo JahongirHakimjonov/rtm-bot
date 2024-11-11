@@ -14,8 +14,6 @@ class MessagesAdmin(ModelAdmin):
     list_display = (
         "id",
         "user",
-        "chat_id",
-        "message_id",
         "text",
         "is_answered",
         "created_at",
@@ -27,7 +25,7 @@ class MessagesAdmin(ModelAdmin):
         "message_id",
         "text",
     )
-    list_filter = ("created_at", "updated_at")
+    list_filter = ("created_at", "updated_at", "is_answered")
     list_filter_submit = True
     list_display_links = ("id", "user", "chat_id", "message_id")
     inlines = (AnswerInline,)
