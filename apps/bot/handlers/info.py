@@ -23,11 +23,11 @@ def handle_info(message: Message, bot: TeleBot):
 
     # Escape special characters for MarkdownV2
     def escape_markdown(text):
-        return re.sub(r'([*_`\[\]()~>#+-=|{}.!])', r'\\\1', text or '')
+        return re.sub(r'([*_`\[\]()~>#+-=|{}.!])', r'\\\1', str(text) or '')
 
     text = _(
-        f"*ID*: {escape_markdown(str(info.id))}\n"
-        f"*Telegram ID*: {escape_markdown(str(info.telegram_id))}\n"
+        f"*ID*: {escape_markdown(info.id)}\n"
+        f"*Telegram ID*: {escape_markdown(info.telegram_id)}\n"
         f"*Username*: {escape_markdown(info.username)}\n"
         f"*First name*: {escape_markdown(info.first_name)}\n"
         f"*Last name*: {escape_markdown(info.last_name)}\n"
@@ -35,12 +35,12 @@ def handle_info(message: Message, bot: TeleBot):
         f"*Phone*: {escape_markdown(info.phone)}\n"
         f"*Region*: {escape_markdown(info.region)}\n"
         f"*Science*: {escape_markdown(info.science)}\n"
-        f"*Created at*: {escape_markdown(str(info.created_at))}\n"
+        f"*Created at*: {escape_markdown(info.created_at)}\n"
     )
 
     bot.send_message(
         message.chat.id,
         text,
-        parse_mode="Markdown",
+        parse_mode="MarkdownV2",
     )
     logger.info(f"User {message.from_user.id} requested info.")
