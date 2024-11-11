@@ -7,12 +7,12 @@ THIRD_PARTY_APPS = [
     "unfold.contrib.guardian",
     "unfold.contrib.simple_history",
     "modeltranslation",
-    "django_ckeditor_5",
+    # "django_ckeditor_5",
     "corsheaders",
     "rosetta",
-    "rest_framework",
-    "drf_spectacular",
-    "drf_spectacular_sidecar",
+    # "rest_framework",
+    # "drf_spectacular",
+    # "drf_spectacular_sidecar",
 ]
 
 DEFAULT_APPS = [
