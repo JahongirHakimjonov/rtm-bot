@@ -56,8 +56,8 @@ class BotUsersAdmin(ModelAdmin):
 
     @display(description=_("Region"), label=True)
     def region_with_color(self, obj):
-        return obj.region.name
+        return obj.region.name if obj.region else _("No region")
 
     @display(description=_("Science"), label=True)
     def science_with_color(self, obj):
-        return obj.science.name
+        return obj.science.name if obj.science else _("No science")
