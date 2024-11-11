@@ -19,16 +19,16 @@ def handle_info(message: Message, bot: TeleBot):
     )
     info = BotUsers.objects.get(telegram_id=message.from_user.id)
     text = _(
-        f"*ID*: {info.id}\n"
-        f"*Telegram ID*: {info.telegram_id}\n"
-        f"*Username*: {info.username}\n"
-        f"*First name*: {info.first_name}\n"
-        f"*Last name*: {info.last_name}\n"
-        f"*Fullname*: {info.full_name}\n"
-        f"*Phone*: {info.phone}\n"
-        f"*Region*: {info.region}\n"
-        f"*Science*: {info.science}\n"
-        f"*Created at*: {info.created_at}\n"
+        f"*ID*: {(str(info.id))}\n"
+        f"*Telegram ID*: {(str(info.telegram_id))}\n"
+        f"*Username*: {(info.username or '')}\n"
+        f"*First name*: {(info.first_name or '')}\n"
+        f"*Last name*: {(info.last_name or '')}\n"
+        f"*Fullname*: {(info.full_name or '')}\n"
+        f"*Phone*: {(info.phone or '')}\n"
+        f"*Region*: {(info.region or '')}\n"
+        f"*Science*: {(info.science or '')}\n"
+        f"*Created at*: {(str(info.created_at))}\n"
     )
     bot.send_message(
         message.chat.id,

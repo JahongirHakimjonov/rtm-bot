@@ -15,6 +15,9 @@ class BotUsersAdmin(ModelAdmin):
         "role_with_color",
         "region_with_color",
         "science_with_color",
+        "full_name",
+        "phone",
+        "username",
         "created_at",
     )
     search_fields = (
