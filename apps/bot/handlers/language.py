@@ -30,7 +30,7 @@ def handle_language(message: Message, bot: TeleBot):
 
     bot.send_message(
         message.chat.id,
-        "Tilni tanlang / Выберите язык / Choice language:",
+        "Tilni tanlang / Выберите язык",
         reply_markup=keyboard,
     )
 
