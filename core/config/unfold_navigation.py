@@ -39,7 +39,7 @@ PAGES = [
             {
                 "title": _("Foydalanuvchilar"),
                 "icon": "person_add",
-                "link": reverse_lazy("admin:auth_user_changelist"),
+                "link": reverse_lazy("admin:rtm_user_changelist"),
                 "permission": lambda request: user_has_group_or_permission(
                     request.user, "view_user"
                 ),

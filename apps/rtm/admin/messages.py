@@ -25,12 +25,19 @@ class MessagesAdmin(ModelAdmin):
         "message_id",
         "text",
     )
-    list_filter = ("created_at", "updated_at", "is_answered")
+    list_filter = ("is_answered", "user__science")
     list_filter_submit = True
     list_display_links = ("id", "user", "text")
     inlines = (AnswerInline,)
     readonly_fields = ("user", "text", "is_answered")
     exclude = ("chat_id", "message_id")
+
+    def get_queryset(self, request):
+        user = request.user
+        queryset = super().get_queryset(request)
+        if user.is_superuser:
+            return queryset
+        return queryset.filter(user__science=user.science)
 
 
 @admin.register(Answer)
