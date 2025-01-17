@@ -24,11 +24,11 @@ class Command(base.BaseCommand):
                 ]
                 existing_names = set(
                     Region.objects.filter(
-                        name__in=[r["name_uz"] for r in regions]
-                    ).values_list("name", flat=True)
+                        name_uz__in=[r["name_uz"] for r in regions]
+                    ).values_list("name_uz", flat=True)
                 )
                 new_regions = [
-                    Region(name=data["name_uz"])
+                    Region(name_uz=data["name_uz"], name_ru=data["name_ru"])
                     for data in regions
                     if data["name_uz"] not in existing_names
                 ]

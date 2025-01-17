@@ -30,11 +30,11 @@ class Command(base.BaseCommand):
                 ]
                 existing_names = set(
                     Science.objects.filter(
-                        name__in=[r["name_uz"] for r in sciences]
-                    ).values_list("name", flat=True)
+                        name_uz__in=[r["name_uz"] for r in sciences]
+                    ).values_list("name_uz", flat=True)
                 )
                 new_sciences = [
-                    Science(name=data["name_uz"])
+                    Science(name_uz=data["name_uz"], name_ru=data["name_ru"])
                     for data in sciences
                     if data["name_uz"] not in existing_names
                 ]
