@@ -1,7 +1,14 @@
 import csv
-import os
+from typing import Any
 
-from django.conf import settings
+from django.core.management import base
+
+from apps.rtm.models import Science
+
+
+import csv
+from typing import Any
+
 from django.core.management import base
 
 from apps.rtm.models import Science
@@ -10,64 +17,32 @@ from apps.rtm.models import Science
 class Command(base.BaseCommand):
     help = "Import CSV data into Science model"
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "csv_path",
-            nargs="?",
-            default=os.path.join(settings.BASE_DIR, "assets/subjects.csv"),
-        )
-
-    def handle(self, *args, **options):
-        csv_path = options.get("csv_path")
-
-        if not os.path.exists(csv_path):
-            self.stdout.write(self.style.ERROR(f"CSV file not found at {csv_path}"))
-            return
-
+    def handle(self, *args: Any, **options: Any):
         try:
-            with open(csv_path, newline="", encoding="utf-8") as csvfile:
-                reader = csv.DictReader(csvfile)
-                for row in reader:
-                    name_uz = row.get("name_uz", None)
-                    name_ru = row.get("name_ru", None)
-
-                    if not name_uz and not name_ru:
-                        self.stdout.write(
-                            self.style.ERROR(
-                                f"Skipping row with missing region names: {row}"
-                            )
-                        )
-                        continue
-
-                    region = None
-                    try:
-                        if name_uz:
-                            region = Science.objects.get(name_uz=name_uz)
-                        elif name_ru:
-                            region = Science.objects.get(name_ru=name_ru)
-                    except (Science.DoesNotExist, Science.MultipleObjectsReturned):
-                        self.stdout.write(
-                            self.style.ERROR(f"Error finding region for {row}")
-                        )
-                        continue
-
-                    if region:
-                        if name_uz:
-                            region.name_uz = name_uz
-                        if name_ru:
-                            region.name_ru = name_ru
-                        region.save()
-                        self.stdout.write(self.style.SUCCESS(f"Region updated: {row}"))
-                    else:
-                        Science.objects.update_or_create(
-                            name_uz=name_uz,
-                            name_ru=name_ru,
-                            defaults={
-                                "name_uz": name_uz,
-                                "name_ru": name_ru,
-                            },
-                        )
-                        self.stdout.write(self.style.SUCCESS(f"Region created: {row}"))
-
+            with open("assets/subjects.csv", newline="", encoding="utf-8") as file:
+                reader = csv.DictReader(file)
+                sciences = [
+                    {
+                        "name_uz": row["name_uz"],
+                        "name_ru": row["name_ru"],
+                    }
+                    for row in reader
+                ]
+                existing_names = set(
+                    Science.objects.filter(
+                        name__in=[r["name_uz"] for r in sciences]
+                    ).values_list("name", flat=True)
+                )
+                new_sciences = [
+                    Science(name=data["name_uz"])
+                    for data in sciences
+                    if data["name_uz"] not in existing_names
+                ]
+                Science.objects.bulk_create(new_sciences)
+                self.stdout.write(
+                    self.style.SUCCESS(
+                        f"Successfully created {len(new_sciences)} Science objects."
+                    )
+                )
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"Error: {e}"))
