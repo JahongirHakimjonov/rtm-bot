@@ -28,7 +28,6 @@ class Command(base.BaseCommand):
             with open(csv_path, newline="", encoding="utf-8") as csvfile:
                 reader = csv.DictReader(csvfile)
                 for row in reader:
-                    id = row.get("id", None)
                     name_uz = row.get("name_uz", None)
                     name_ru = row.get("name_ru", None)
 
@@ -46,17 +45,13 @@ class Command(base.BaseCommand):
                             region = Science.objects.get(name_uz=name_uz)
                         elif name_ru:
                             region = Science.objects.get(name_ru=name_ru)
-                    except Science.DoesNotExist:
-                        pass
-                    except Science.MultipleObjectsReturned:
+                    except (Science.DoesNotExist, Science.MultipleObjectsReturned):
                         self.stdout.write(
-                            self.style.ERROR(f"Multiple regions found for {row}")
+                            self.style.ERROR(f"Error finding region for {row}")
                         )
                         continue
 
                     if region:
-                        if id:
-                            region.id = id
                         if name_uz:
                             region.name_uz = name_uz
                         if name_ru:
@@ -65,7 +60,8 @@ class Command(base.BaseCommand):
                         self.stdout.write(self.style.SUCCESS(f"Region updated: {row}"))
                     else:
                         Science.objects.update_or_create(
-                            id=id,
+                            name_uz=name_uz,
+                            name_ru=name_ru,
                             defaults={
                                 "name_uz": name_uz,
                                 "name_ru": name_ru,
